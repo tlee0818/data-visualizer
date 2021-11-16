@@ -25,20 +25,26 @@ The framework can provide a list of colors in images to visualization plugins.
 
 ## Generality vs Specificity
 
-The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
+We have designed a framework that is reusable and specific in scope, while allowing for many different plugins. Firstly, we made the decision to focus only on the Color Detection Model accessible with the Clarifai API. We could have increased our functionality to include more models, like the Food model and the General model, but we thought that analyzing the colors in an image/a group of images and providing a GUI to display visualizations was useful enough to focus more heavily on. This allows us to provide reuse in a more specific space, instead of having to make decisions about many different models that all have different inputs and outputs.
+
+For data plugins, we are going to require the plugin developer to provide a function that outputs a standardized JSON file that will be read by the framework. The JSON will include the image source URL, dimensions, and file type, and will have some required specifications. Basically, it is up to the developer to use an API or other method to grab images from a source and create the JSONs that the framework can use. The plugin will also have to take user input from the GUI/framework, in the form of a search keyword and # of images. The reuse available is the fact that every developer will provide the same information to the framework in the same structure, and there will be a standard interface to take in information from the GUI.
+
+The plugin loader will take in information about the data plugins, mainly the name that the plugin developer wants to have in the GUI. The GUI will allow a user to pick between any of the data plugins loaded, and no matter which plugin is chosen the user will input a search keyword and # of images. This keeps the user experience cohesive and allows reuse.
+
+The framework provides the GUI where display plugins will be able to show whatever visualizations the plugin developers want. Firstly, the user will interact with a slideshow display of the images that the data plugin loaded in. Once an image and a visualization is selected, the plugin will have to provide an HTML file of the visualization that fits the specifications the framework provides, which will then be displayed by the GUI. This provides a lot of reuse and functionality as the visualization will display correctly as long as the HTML file provided by the plugin fits the specifications given (based on implementation of the GUI).
 
 ## Project Structure
 .
-└─ core									# core of files of the framework
+└─ core							# core of files of the framework
 │   └──  framework.ts			# the interface of the framework
-│   └──  frameworkimpl.ts	# implementation of the framework interface
+│   └──  frameworkimpl.ts	    # implementation of the framework interface
 │   └──  dataplugin.ts			# interface for data plugins
 │   └──	 displayplugin.ts		# interface for display plugins
-└─ plugins								# different implementations for the plugins
+└─ plugins						# different implementations for the plugins
 │   └──  dataplugin				# directory for implementations of the data plugin interface
 │   └──  displayplugin			# directory for implementation of the display plugin interface
 └─ pluginloader.ts				# an async function that takes in paths of the two different plugins; loads them to the framework
-└─ ui.ts									# ui of the framework
+└─ ui.ts						# ui of the framework
 
 
 ## Plugins
