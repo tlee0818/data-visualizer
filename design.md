@@ -36,15 +36,25 @@ The framework provides the GUI where display plugins will be able to show whatev
 ## Project Structure
 .
 └─ core							# core of files of the framework
+
 │   └──  framework.ts			# the interface of the framework
+
 │   └──  frameworkimpl.ts	    # implementation of the framework interface
+
 │   └──  dataplugin.ts			# interface for data plugins
+
 │   └──	 displayplugin.ts		# interface for display plugins
+
 └─ plugins						# different implementations for the plugins
+
 │   └──  dataplugin				# directory for implementations of the data plugin interface
+
 │   └──  displayplugin			# directory for implementation of the display plugin interface
+
 └─ pluginloader.ts				# an async function that takes in paths of the two different plugins; loads them to the framework
+
 └─ ui.ts						# ui of the framework
+
 
 
 ## Plugins
