@@ -6,7 +6,6 @@ The idea is to perform color analysis on different images. The framework analyze
  
 For the framework, we use the Color Detector Tool from Clarifai. Given an image, the tool examines the dominant colors in the image and returns density values for those colors. Since the returned values are in hex format, we can represent colors in a more specific way as we visualize the outputs. 
  
-Data plugins can provide a list of text fragments with corresponding time stamps.
 All data plugins take queries and provide corresponding images in JSON format.
 Data plugins  include:
 - Unsplash Developers API (Unsplash images)
