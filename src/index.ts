@@ -8,7 +8,7 @@ import express from 'express'
 import exphbs from 'express-handlebars'
 import { ColorFrameworkImpl } from './core/frameworkimpl'
 import { loadDataPlugins, loadDisplayPlugin } from './pluginloader'
-import { renderPage } from './ui'
+//import { renderPage } from './ui'
 
 /* console.log('starting server')
 const app = express()

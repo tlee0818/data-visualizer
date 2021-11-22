@@ -1,6 +1,5 @@
 import * as http from 'http'
 import * as https from 'https'
-import { promptSimShell } from 'readline-sync'
 
 const api_key = "e7dc7fa122b345bfb36086ff6be159bc"
 
