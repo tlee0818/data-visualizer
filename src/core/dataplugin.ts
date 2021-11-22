@@ -8,12 +8,25 @@ import { Image } from './image'
  */
 interface DataPlugin {
 
-  /**
-     * Gets the name of the plug-in game.
+   /**
+     * Get name of the plugin
+     * 
+     * @return the name of this plugin
      */
-  processJson: () => Image[]
 
-  queryImage: (keyword: String, numImage: number) => void
+  getDataPluginName: () => string
+
+
+   /**
+     * Get images from the user query
+     *
+     * @param keyword The keyword the user is trying to query for.
+     * @param numImage Number of images the user wants to query.
+     * @return a list of {@link Image} as a result of the query
+     */
+
+  queryImages: (keyword: String, numImage: number) => Image[]
+
 }
 
 export { DataPlugin }

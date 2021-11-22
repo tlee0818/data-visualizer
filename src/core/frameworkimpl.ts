@@ -5,6 +5,7 @@ import { ColorFramework } from './framework'
  */
 class ColorFrameworkImpl implements ColorFramework {
 
+    
 }
 
 export { ColorFrameworkImpl }
