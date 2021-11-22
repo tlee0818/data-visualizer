@@ -36,7 +36,7 @@ class ColorFrameworkImpl implements ColorFramework {
     }
 
     fetchColorDensities(): void{
-        
+        //use the clarifaicall.ts
     }
 
 
