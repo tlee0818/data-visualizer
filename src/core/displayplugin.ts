@@ -1,4 +1,5 @@
 import { ColorFramework } from './framework'
+import { Image } from './image'
 
 /**
  * The game plug-in interface that plug-ins use to implement and register games
@@ -11,6 +12,7 @@ interface DisplayPlugin {
      * some methods
      */
   
+  getChart: (image: Image) => string
   
 }
 
