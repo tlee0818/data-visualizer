@@ -5,7 +5,7 @@ import { Image } from './image'
  */
 interface ColorFramework {
   /**
-     * Get the name of the player that currently has the move.
+     * query images and set them in the private variable
      */
   makeQuery: (keyword: string, numImage: number) => void
   

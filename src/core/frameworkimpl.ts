@@ -17,14 +17,32 @@ class ColorFrameworkImpl implements ColorFramework {
         
     }
 
-    public makeQuery(keyword: string, numImage: number){
+    makeQuery(keyword: string, numImage: number){
         if (this._currentDataPlugin === null){
             return
         }
         else{
             this._images = this._currentDataPlugin.queryImages(keyword, numImage)
         }
-        
+    }
+
+    getColorDensityChart(image: Image): string{
+        return this._currentDisplayPlugin.getChart(image)
+    }
+
+
+    /**
+     * Sets {@link DataPlugin} with the framework
+     */
+    setCurrentDataPlugin (pluginIndex: number): void {
+        this._currentDataPlugin = this._dataPlugins[pluginIndex]
+    }
+
+    /**
+     * Sets {@link DisplayPlugin} with the framework
+     */
+    setCurrentDisplayPlugin (pluginIndex: number): void {
+        this._currentDisplayPlugin = this._displayPlugins[pluginIndex]
     }
 
     /**
