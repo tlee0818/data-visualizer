@@ -18,4 +18,10 @@ interface Image {
     //bytes or url
     getImage: () => string
 
+    /**
+       * Returns the dictionary of key: color name in english, value: density value of this image
+       */
+     getColorDensities: () => { [colorName: string]: number }
+
+
 }
