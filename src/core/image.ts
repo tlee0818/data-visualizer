@@ -1,27 +1,60 @@
-interface Image {
+class Image {
+
+    private _name: string
+    private _height: number
+    private _width: number
+    private _imageUrl: string
+    private _colorDensities: { [colorName: string]: number }
+
+
+
+    constructor(name: string, height: number, width: number, imageUrl: string){
+        this._name = name
+        this._height = height
+        this._width = width
+        this._imageUrl = imageUrl
+        this._colorDensities = {}
+    }
 
     /**
        * Gets the name of the plug-in game.
        */
-    getName: () => string
+    public getName(): string{
+        return this._name
+    }
   
     /**
-       * Gets the width (in squares) of the plug-in game's grid.
+       * Gets the height of image
        */
-    getHeight: () => number
+    public getHeight(): number{
+        return this._height
+    }
   
     /**
-       * Returns the width (in squares) of the plug-in game's grid.
+       * Returns the width of image 
        */
-    getWidth: () => number
+    public getWidth(): number{
+        return this._width
+    }
 
     //bytes or url
-    getImage: () => string
+    public getImage(): string{
+        return this._imageUrl
+    }
 
     /**
        * Returns the dictionary of key: color name in english, value: density value of this image
        */
-     getColorDensities: () => { [colorName: string]: number }
-
-
+    public getColorDensities(): { [colorName: string]: number }{
+        return this._colorDensities
+    }
+    
+    /**
+       * Set {@param colorName} key's value to {@param densityValue} in integers. 
+       */
+    public setColorDensity(colorName: string, densityValue: number): void{
+        this._colorDensities.colorName = densityValue
+    }
 }
+
+export { Image }
