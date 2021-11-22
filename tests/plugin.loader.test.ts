@@ -1,0 +1,16 @@
+
+import { DataPlugin } from "../src/core/dataplugin";
+import { ColorFrameworkImpl } from "../src/core/frameworkimpl";
+import { loadDataPlugins } from "../src/pluginloader";
+
+const frame = new ColorFrameworkImpl
+
+const dataPlugins = loadDataPlugins("./core/dataplugins")
+
+test("print plugins", () => {
+
+    return dataPlugins.then(data => {
+        console.log(data)
+        expect(data.length).toBeGreaterThan(0)
+        })
+    })

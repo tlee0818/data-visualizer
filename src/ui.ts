@@ -1,9 +1,11 @@
+/**
+
 import { GameFrameworkImpl } from './core/frameworkimpl'
 import { Response } from 'express-serve-static-core'
 
-/**
+
  * creates the data to fill into the template
- */
+
 function genPage (framework: GameFrameworkImpl): any {
   // console.log("update page")
 
@@ -46,3 +48,4 @@ function renderPage (framework: GameFrameworkImpl, res: Response<any, Record<str
 }
 
 export { renderPage }
+*/
