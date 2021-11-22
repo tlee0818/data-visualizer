@@ -7,7 +7,7 @@ import { Image } from './image'
  * The framework core implementation.
  */
 class ColorFrameworkImpl implements ColorFramework {
-    private _images: Image[] = []
+    private _selectedImage: Image | null = null
     private _currentDataPlugin: DataPlugin | null = null
     private _currentDisplayPlugin: DisplayPlugin | null = null
     private _dataPlugins: DataPlugin[] = []
@@ -17,12 +17,12 @@ class ColorFrameworkImpl implements ColorFramework {
         
     }
 
-    makeQuery(keyword: string, numImage: number){
+    makeQuery(keyword: string){
         if (this._currentDataPlugin === null){
             return
         }
         else{
-            this._images = this._currentDataPlugin.queryImages(keyword, numImage)
+            this._selectedImage = this._currentDataPlugin.queryImages(keyword)
         }
     }
 
@@ -35,7 +35,7 @@ class ColorFrameworkImpl implements ColorFramework {
         }
     }
 
-    fetchColorDensities(): void{
+    fetchColorDensity(): void{
         //use the clarifaicall.ts
     }
 
