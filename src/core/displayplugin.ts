@@ -9,10 +9,24 @@ import { Image } from './image'
 interface DisplayPlugin {
 
   /**
-     * some methods
+     * gets the chart @param image color density values as html string
      */
   
   getChart: (image: Image) => string
+
+  /**
+     * loads the necessary javascript for this display plugin
+     */
+
+    /**
+         * Called (only once) when the plug-in is first registered with the
+         * framework, giving the plug-in a chance to perform any initial set-up
+         * such as loading the javascript
+         *
+         * @param framework The {@link ColorFramework} instance with which the plug-in
+         *                  was registered.
+         */
+    onRegister: (framework: ColorFramework) => void
   
 }
 

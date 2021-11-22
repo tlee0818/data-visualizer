@@ -27,7 +27,12 @@ class ColorFrameworkImpl implements ColorFramework {
     }
 
     getColorDensityChart(image: Image): string{
-        return this._currentDisplayPlugin.getChart(image)
+        if (this._currentDisplayPlugin === null){
+            return "Chart Not Available"
+        }
+        else{
+            return this._currentDisplayPlugin.getChart(image)
+        }
     }
 
 
@@ -56,6 +61,7 @@ class ColorFrameworkImpl implements ColorFramework {
      * Registers a new {@link DisplayPlugin} with the framework
      */
     registerDisplayPlugin (plugin: DisplayPlugin): void {
+        plugin.onRegister(this)
         this._displayPlugins.push(plugin)
     }
 }
