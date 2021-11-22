@@ -7,7 +7,7 @@ interface ColorFramework {
   /**
      * Get the name of the player that currently has the move.
      */
-  makeQuery: () => string
+  makeQuery: (keyword: string, numImage: number) => void
   
 }
 
