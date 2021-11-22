@@ -35,6 +35,10 @@ class ColorFrameworkImpl implements ColorFramework {
         }
     }
 
+    fetchColorDensities(): void{
+        
+    }
+
 
     /**
      * Sets {@link DataPlugin} with the framework

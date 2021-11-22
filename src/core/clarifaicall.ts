@@ -4,6 +4,7 @@ import { promptSimShell } from 'readline-sync'
 
 const api_key = "e7dc7fa122b345bfb36086ff6be159bc"
 
+//NEED TO CHANGE PATH FOR CORRECT ML MODEL
 const ml_options = {
     hostname: "api.clarifai.com",
     path: '/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs',
@@ -25,7 +26,7 @@ const ml_request_data = `{
     ]
   }`
 
-
+//NEED TO CHANGE HOSTNAME AND PORT
 const demo_options = {
     hostname: "feature.isri.cmu.edu",
     port: 3003,
