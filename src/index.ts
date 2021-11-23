@@ -60,7 +60,6 @@ app.get('/registerDisplayPlugin', (req, res) => {
   renderPage(framework, res)
 })
 
-const keyword 
  app.get('/searchImage', (req, res) => {
    if (req.query.keyword) { framework.makeQuery(req.query.keyword as string) }
    renderPage(framework, res)
