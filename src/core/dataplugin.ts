@@ -22,7 +22,7 @@ interface DataPlugin {
      *
      * @param keyword The keyword the user is trying to query for.
      * @param numImage Number of images the user wants to query.
-     * @return a list of {@link Image} as a result of the query
+     * @return a list of {@link Promise<FrameworkImage>} that sets framework's image as a the promise's image
      */
 
   queryImage: (keyword: string) => Promise<FrameworkImage>

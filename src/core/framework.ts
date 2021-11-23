@@ -13,7 +13,7 @@ interface ColorFramework {
   /**
      * query images and set them in the private variable
      */
-  getColorDensityChart: (image: FrameworkImage) => string
+  getColorDensityChart: () => void
   
 }
 

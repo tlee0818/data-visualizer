@@ -1,51 +1,54 @@
-/**
-
-import { GameFrameworkImpl } from './core/frameworkimpl'
+import { ColorFrameworkImpl } from './core/frameworkimpl'
 import { Response } from 'express-serve-static-core'
 
-
+/**
  * creates the data to fill into the template
-
-function genPage (framework: GameFrameworkImpl): any {
+ */
+function genPage (framework: ColorFrameworkImpl): any {
   // console.log("update page")
 
   interface PluginEntry { name: string, link: string }
-  interface Cell { text: string | null, clazz: string, link: string }
 
-  const cells: Cell[] = []
-  const width = framework.getGridWidth()
-  for (let x = 0; x < width; x++) {
-    for (let y = 0; y < framework.getGridHeight(); y++) {
-      const cell: Cell = {
-        text: framework.getSquare(x, y),
-        link: `/play?x=${x}&y=${y}`,
-        clazz: framework.isSquarePlayable(x, y)
-      }
-      cells.push(cell)
-    }
+  const dataPlugins: PluginEntry[] = []
+  const dataPluginNames = framework.getRegisteredDataPluginName()
+  for (let i = 0; i < dataPluginNames.length; i++) {
+    dataPlugins.push({ name: dataPluginNames[i], link: 'registerDataPlugin?i=' + i })
   }
 
-  const plugins: PluginEntry[] = []
-  const pluginNames = framework.getRegisteredPluginName()
-  for (let i = 0; i < pluginNames.length; i++) {
-    plugins.push({ name: pluginNames[i], link: '/plugin?i=' + i })
+  const displayPlugins: PluginEntry[] = []
+  const diplayPluginNames = framework.getRegisteredDisplayPluginName()
+  for (let i = 0; i < diplayPluginNames.length; i++) {
+    displayPlugins.push({ name: diplayPluginNames[i], link: '/registerDisplayPlugin?i=' + i })
   }
-  const numColStyle = Array(framework.getGridWidth()).fill('auto').join(' ')
+
+  const currDataPlugin = framework.getCurrentDataPlugin()
+  const currentDataPluginName = currDataPlugin === null ? null : currDataPlugin.getDataPluginName()
+
+  const currentDisplayPlugin = framework.getCurrentDisplayPlugin()
+  const currentDisplayPluginName = currentDisplayPlugin === null ? null : currentDisplayPlugin.getDisplayPluginName()
+
+  const img = framework.getSelectedImage()
+  const imageUrl = img === null ? null : img.getImage()
+  const imageName = img === null ? null : img.getName()
+
+  const keywordLink = "/searchImage?keyword="
+
+
 
   return {
-    name: framework.getGameName(),
-    footer: framework.getFooter(),
-    cells: cells,
-    plugins: plugins,
-    numColStyle: numColStyle,
-    currentPlayer: framework.getCurrentPlayerName(),
-    gameOverMsg: framework.getGameOverMsg()
+    dataPlugins: dataPlugins,
+    currentDataPluginName: currentDataPluginName,
+    keywordLink: keywordLink,
+    displayPlugins: displayPlugins,
+    currentDisplayPluginName: currentDisplayPluginName,
+    imageUrl: imageUrl,
+    imageName: imageName,
+    chart: framework.getChartHtmlString()
   }
 }
 
-function renderPage (framework: GameFrameworkImpl, res: Response<any, Record<string, any>, number>): void {
+function renderPage (framework: ColorFrameworkImpl, res: Response<any, Record<string, any>, number>): void {
   res.render('main', genPage(framework))
 }
 
 export { renderPage }
-*/
