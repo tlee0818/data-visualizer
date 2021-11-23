@@ -25,7 +25,7 @@ interface DataPlugin {
      * @return a list of {@link Image} as a result of the query
      */
 
-  queryImage: (keyword: String) => Image
+  queryImage: (keyword: string) => Image
 
 }
 
