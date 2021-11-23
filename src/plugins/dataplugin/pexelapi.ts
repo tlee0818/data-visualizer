@@ -1,10 +1,6 @@
 import { DataPlugin } from "../../core/dataplugin";
 import { FrameworkImage } from "../../core/frameworkimage";
-import { createClient, PhotosWithTotalResults, ErrorResponse } from 'pexels';
-
-
-
-
+import { createClient, PhotosWithTotalResults } from 'pexels';
 
 const fetch = require('sync-fetch');
 
