@@ -48,6 +48,7 @@
             Data Plugins
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="">hihi</a>
             {{#each dataPlugins}}
             <a class="dropdown-item" href="{{link}}">{{name}}</a>
             {{/each}}
@@ -63,9 +64,6 @@
             <input type="text" id="keyword" name="keyword"><br><br>
             <input type="submit" value="Submit">
           </form>
-          <div class="col">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
         </form>
       </div>
       <div class="col" id="displayplugin">
@@ -99,7 +97,7 @@
       </div>
 
       <div class="col">
-        {{#if chart != ""}}
+        {{#if chart}}
         {{chart}}
         {{else}}
         <h3>Analysis yet to be done</h3>
