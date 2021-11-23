@@ -1,5 +1,5 @@
 import { ColorFramework } from './framework'
-import { FrameworkImage } from './image'
+import { FrameworkImage } from './frameworkimage'
 
 /**
  * The game plug-in interface that plug-ins use to implement and register games
@@ -13,10 +13,6 @@ interface DisplayPlugin {
      */
   
   getChart: (image: FrameworkImage) => string
-
-  /**
-     * loads the necessary javascript for this display plugin
-     */
 
     /**
          * Called (only once) when the plug-in is first registered with the

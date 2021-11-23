@@ -1,5 +1,5 @@
 import { ColorFramework } from './framework'
-import { FrameworkImage } from './image'
+import { FrameworkImage } from './frameworkimage'
 
 /**
  * The game plug-in interface that plug-ins use to implement and register games
@@ -26,6 +26,7 @@ interface DataPlugin {
      */
 
   queryImage: (keyword: string) => FrameworkImage
+
 
 }
 
