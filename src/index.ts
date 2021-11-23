@@ -10,9 +10,10 @@ import { loadDataPlugins, loadDisplayPlugin } from './pluginloader'
 import { newPexelApi } from './plugins/dataplugin/pexelapi'
 
 import { newSerpApi } from './plugins/dataplugin/serpapi'
+import { newUnsplashApi } from './plugins/dataplugin/unsplashapi'
 
 let hi: FrameworkImage = new FrameworkImage("nope", 0, 0, "")
-newPexelApi().queryImage("coffee").then(image => {hi = image})
+newUnsplashApi().queryImage("coffee").then(image => {hi = image})
 setTimeout(function(){ console.log(hi.getName()) }, 1000);
 
 //import { renderPage } from './ui'
