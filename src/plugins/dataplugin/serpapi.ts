@@ -11,7 +11,7 @@ function newSerpApi(): DataPlugin{
         },
 
         queryImage (keyword: string): FrameworkImage {
-            return new Image("hi", 1, 1, "hi")
+            return new FrameworkImage("hi", 1, 1, "hi")
         }
     }
 }
