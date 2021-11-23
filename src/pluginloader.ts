@@ -21,7 +21,9 @@ import path from 'path'
     jsFiles.map(f => require(path.join(dir, f.name))))
   filesPr.then(files => console.log(files))
   jsFilesPr.then(files => console.log(files))
-  modulesPr.then(files => console.log(files))
+  console.log("wtf1")
+  modulesPr.then(files => console.log(files)).catch(error => console.log(error))
+  console.log("wtf2")
   return await modulesPr.then(initFunctions =>
     initFunctions.map(m => {
       return m.exportObj.pluginInit() as DataPlugin
