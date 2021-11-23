@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{name}}</title>
+  <script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function (event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col" id="dataplugin">
+        {{#if currentDataPluginName}}
+        <h2>{{currentDataPluginName}}</h2>
+        {{else}}
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Data Plugins
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {{#each dataPlugins}}
+            <a class="dropdown-item" href="{{link}}">{{name}}</a>
+            {{/each}}
+          </div>
+        </div>
+        {{/if}}
+      </div>
+      <div class="col">
+        {{!-- might not work --}}
+        <form action="/searchImage/" method="get">
+          <form action="/searchImage">
+            <label for="keyword">Keyword</label>
+            <input type="text" id="keyword" name="keyword"><br><br>
+            <input type="submit" value="Submit">
+          </form>
+        </form>
+      </div>
+      <div class="col" id="displayplugin">
+        {{#if currentDisplayPluginName}}
+        <h2>{{currentDisplayPluginName}}</h2>
+        <button href="/analysis" class="btn btn-primary">Do Analysis</button>
+        {{else}}
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Display Plugins
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {{#each displayPlaygins}}
+            <a class="dropdown-item" href="{{link}}">{{name}}</a>
+            {{/each}}
+          </div>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        {{#if imageUrl}}
+        <img src="{{imageUrl}}" alt="{{imageName}}" width="500">
+        {{else}}
+        <h3>Image yet to be chosen</h3>
+        {{/if}}
+      </div>
+
+      <div class="col">
+        {{#if chart}}
+        {{chart}}
+        {{else}}
+        <h3>Analysis yet to be done</h3>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-9">
+        <button href="/new" class="btn btn-primary">Start Over</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</body>
+
+</html>

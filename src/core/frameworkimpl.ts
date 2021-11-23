@@ -31,6 +31,7 @@ const ml_request_data = `{
 
 class ColorFrameworkImpl implements ColorFramework {
     private _selectedImage: FrameworkImage | null = null
+    private _chartHtmlString: string = ""
     private _currentDataPlugin: DataPlugin | null = null
     private _currentDisplayPlugin: DisplayPlugin | null = null
     private _dataPlugins: DataPlugin[] = []
@@ -40,31 +41,34 @@ class ColorFrameworkImpl implements ColorFramework {
         
     }
 
-    makeQuery(keyword: string){
+    async makeQuery(keyword: string): Promise<void>{
         if (this._currentDataPlugin === null){
-            return
+            throw new Error("current data plugin is not set.")
         }
         else{
-            this._selectedImage = this._currentDataPlugin.queryImage(keyword)
+            const imgPromise = await this._currentDataPlugin.queryImage(keyword)
+                    .then(image => {
+                        this._selectedImage = image
+                    })
+            
+            return imgPromise
         }
     }
 
-    getImage(): FrameworkImage | null{
-        if (this._selectedImage === null){
-            return null
-        }
-        else{
-            return this._selectedImage
-        }
-    }
-
-    getColorDensityChart(image: FrameworkImage): string{
+    getColorDensityChart(): void{
         if (this._currentDisplayPlugin === null){
-            return "Chart Not Available"
+            this._chartHtmlString = "Chart Not Available"
+        }
+        else if (this._selectedImage === null){
+            this._chartHtmlString = "Image Not Selected"
         }
         else{
-            return this._currentDisplayPlugin.getChart(image)
+            this._chartHtmlString = this._currentDisplayPlugin.getChart(this._selectedImage)
         }
+    }
+
+    getChartHtmlString(): string{
+        return this._chartHtmlString
     }
 
     fetchColorDensity(): void{
@@ -115,6 +119,33 @@ class ColorFrameworkImpl implements ColorFramework {
         req.end()
     }
 
+    //reset current plugins and image
+    startNewAnalysis(): void{
+        this._selectedImage = null
+        this._currentDataPlugin = null
+        this._currentDisplayPlugin = null
+    }
+
+    getRegisteredDataPluginName (): string[] {
+        return this._dataPlugins.map(p => p.getDataPluginName())
+    }
+
+    getRegisteredDisplayPluginName (): string[] {
+        return this._displayPlugins.map(p => p.getDisplayPluginName())
+    }
+
+    getCurrentDataPlugin (): DataPlugin | null {
+        return this._currentDataPlugin
+    }
+
+    getCurrentDisplayPlugin (): DisplayPlugin | null {
+        return this._currentDisplayPlugin
+    }
+
+    getSelectedImage (): FrameworkImage | null {
+        return this._selectedImage
+    }
+
 
     /**
      * Sets {@link DataPlugin} with the framework
@@ -152,14 +183,6 @@ class ColorFrameworkImpl implements ColorFramework {
         plugin.onRegister(this)
         this._displayPlugins.push(plugin)
     }
-    /**
-     * Sets {@link _selectedImage} directly for ease of testing
-     */
-     testImageSetter (image : FrameworkImage): void {
-        this._selectedImage = image
-    }
-
-
 }
 
 export { ColorFrameworkImpl }
