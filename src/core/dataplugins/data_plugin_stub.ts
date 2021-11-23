@@ -12,7 +12,7 @@ function newDataPluginStub () : DataPlugin {
           * @param numImage Number of images the user wants to query.
           * @return a list of {@link Image} as a result of the query
           */
-       queryImages: (keyword: String) => new FrameworkImage("banana", 1000, 1000, "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/271157_2200-732x549.jpg")
+       queryImage: (keyword: String) => new FrameworkImage("banana", 1000, 1000, "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/271157_2200-732x549.jpg")
     }
 }
 
