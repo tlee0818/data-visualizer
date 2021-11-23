@@ -45,7 +45,10 @@ class ColorFrameworkImpl implements ColorFramework {
             throw new Error("current data plugin is not set.")
         }
         else{
-            this._selectedImage = this._currentDataPlugin.queryImage(keyword)
+            this._currentDataPlugin.queryImage(keyword)
+                    .then(image => {
+                        this._selectedImage = image
+                    })
         }
     }
 
