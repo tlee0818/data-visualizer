@@ -38,14 +38,22 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col">
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <select class="form-control" id="dataPluginSelector">
-            {{#each dataPlugins}}
-            <option>{{name}}</option>
-            {{/each}}
-          </select>
+      <div class="col" id="dataplugin">
+        {{#if currentDataPluginName}}
+        <h2>{{currentDataPluginName}}</h2>
+        {{else}}
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Data Plugins
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          {{#each dataPlugins}}
+          <a class="dropdown-item" href="{{link}}">{{name}}</a>
+          {{/each}}
+          </div>
         </div>
+        {{/if}}
       </div>
       <div class="col">
         <form action="/searchImage/" method="get">
@@ -58,28 +66,44 @@
           </div>
         </form>
       </div>
-      <div class="col">
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <select class="form-control" id="displayPluginSelector">
-            {{#each displayPlugins}}
-            <option>{{name}}</option>
-            {{/each}}
-          </select>
+      <div class="col" id="displayplugin">
+        {{#if currentDisplayPluginName}}
+        <h2>{{currentDisplayPluginName}}</h2>
+        {{else}}
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Display Plugins
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          {{#each displayPlaygins}}
+          <a class="dropdown-item" href="{{link}}">{{name}}</a>
+          {{/each}}
+          </div>
         </div>
+        {{/if}}
       </div>
     </div>
 
     <div class="row">
       <div class="col">
-        {{!-- image goes here --}}
+        {{#if imageUrl}}
+        <img src="{{imageUrl}}" alt="{{imageName}}" width="500">
+        {{else}}
+        <h3>Image yet to be chosen</h3>
+        {{/if}}
       </div>
-      
+
       <div class="col">
-        {{!-- graph goes here --}}
+        {{#if chart != ""}}
+        {{chart}}
+        {{else}}
+        <h3>Analysis yet to be done</h3>
+        {{/if}}
       </div>
     </div>
   </div>
-  
+
 
 
 

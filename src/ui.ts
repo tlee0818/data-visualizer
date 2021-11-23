@@ -21,18 +21,28 @@ function genPage (framework: ColorFrameworkImpl): any {
     displayPlugins.push({ name: diplayPluginNames[i], link: '/registerDisplayPlugin?i=' + i })
   }
 
+  const currDataPlugin = framework.getCurrentDataPlugin()
+  const currentDataPluginName = currDataPlugin === null ? null : currDataPlugin.getDataPluginName()
+
+  const currentDisplayPlugin = framework.getCurrentDisplayPlugin()
+  const currentDisplayPluginName = currentDisplayPlugin === null ? null : currentDisplayPlugin.getDisplayPluginName()
+
   const img = framework.getSelectedImage()
   const imageUrl = img === null ? null : img.getImage()
+  const imageName = img === null ? null : img.getName()
 
   const keywordLink = "/searchImage?keyword="
 
+
+
   return {
     dataPlugins: dataPlugins,
-    currentDataPlugin: framework.getCurrentDataPlugin(),
+    currentDataPluginName: currentDataPluginName,
     keywordLink: keywordLink,
     displayPlugins: displayPlugins,
-    currentDisplayPlugin: framework.getCurrentDisplayPlugin(),
+    currentDisplayPluginName: currentDisplayPluginName,
     imageUrl: imageUrl,
+    imageName: imageName,
     chart: framework.getChartHtmlString()
   }
 }
