@@ -118,14 +118,22 @@ class ColorFrameworkImpl implements ColorFramework {
      * Sets {@link DataPlugin} with the framework
      */
     setCurrentDataPlugin (pluginIndex: number): void {
-        this._currentDataPlugin = this._dataPlugins[pluginIndex]
+        if (pluginIndex < this._dataPlugins.length){
+            this._currentDataPlugin = this._dataPlugins[pluginIndex]
+        } else {
+            throw new Error("given index out of range")
+        }
     }
 
     /**
      * Sets {@link DisplayPlugin} with the framework
      */
     setCurrentDisplayPlugin (pluginIndex: number): void {
-        this._currentDisplayPlugin = this._displayPlugins[pluginIndex]
+        if (pluginIndex < this._dataPlugins.length){
+            this._currentDisplayPlugin = this._displayPlugins[pluginIndex]
+        } else {
+            throw new Error("given index out of range")
+        }
     }
 
     /**
