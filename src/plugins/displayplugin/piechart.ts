@@ -4,7 +4,7 @@ import { FrameworkImage } from "../../core/frameworkimage";
 import { ColorFramework } from "../../core/framework";
 
 
-function newCloudPlugin () : DisplayPlugin {
+function newPiePlugin () : DisplayPlugin {
     let parseImageToList = function (image : FrameworkImage) :  (string | number)[][] {
         const dens = image.getColorDensities()
         const L : (string | number)[][] = [[]]
@@ -33,16 +33,16 @@ function newCloudPlugin () : DisplayPlugin {
         getChart: function (image: FrameworkImage) : string {
             const columns = parseImageToList(image)
             const dict = createHexDictionary(image)
-            const colors = []
+            const colors : string[] = []
             for (let i = 0; i < columns.length; i++) {
-                const colorName = columns[i][0]
+                const colorName = columns[i][0] as string
                 colors[i] = dict[colorName]
             }
-
+            return ""
         },
 
 
-
+        getDisplayPluginName: () => "Pie Chart",
 
 
         /**
@@ -71,3 +71,5 @@ var chart = c3.generate({
         onmouseout: function (d, i) { console.log("onmouseout", d, i); }
     }
 });
+
+export {newPiePlugin}

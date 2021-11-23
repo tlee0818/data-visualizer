@@ -1,7 +1,6 @@
 import { DisplayPlugin } from "../../../core/displayplugin";
 import { FrameworkImage } from "../../../core/frameworkimage";
 import { ColorFramework } from "../../../core/framework";
-import { parse } from "path/posix";
 
 
 function newCloudPlugin () : DisplayPlugin {
@@ -57,6 +56,10 @@ function newCloudPlugin () : DisplayPlugin {
          */
         onRegister: function (framework: ColorFramework) : void {
             console.log("nothing")
-        }
+        },
+
+        getDisplayPluginName: () => "Word Cloud"
     }
 }
+
+export {newCloudPlugin}
