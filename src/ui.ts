@@ -33,8 +33,14 @@ function genPage (framework: ColorFrameworkImpl): any {
 
   const keywordLink = "/searchImage?keyword="
 
+  if (framework.getChartHtmlString() === ""){
+
+  }
+
+  const chart = framework.getChartHtmlString() === "" ? null : framework.getChartHtmlString()
 
 
+  console.log(dataPlugins)
   return {
     dataPlugins: dataPlugins,
     currentDataPluginName: currentDataPluginName,
@@ -43,7 +49,7 @@ function genPage (framework: ColorFrameworkImpl): any {
     currentDisplayPluginName: currentDisplayPluginName,
     imageUrl: imageUrl,
     imageName: imageName,
-    chart: framework.getChartHtmlString()
+    chart: chart
   }
 }
 

@@ -27,7 +27,7 @@
  // updates on actions and when starting a new game
  const framework = new ColorFrameworkImpl()
  const dataPluginsPromise = loadDataPlugins(DATA_PLUGIN_DIR)
- const displayPluginsPromise = loadDisplayPlugin(DISPLAY_PLUGIN_DIR)
+ //const displayPluginsPromise = loadDisplayPlugin(DISPLAY_PLUGIN_DIR)
 
 dataPluginsPromise.then(ps =>
   ps.forEach(p => {
@@ -35,37 +35,46 @@ dataPluginsPromise.then(ps =>
     framework.registerDataPlugin(p)
   })).catch(e => console.error(`Failed to load plugins: ${e}`))
 
-displayPluginsPromise.then(ps =>
-  ps.forEach(p => {
-    console.log('Registering plugin ' + p.getDisplayPluginName())
-    framework.registerDisplayPlugin(p)
-  })).catch(e => console.error(`Failed to load plugins: ${e}`))
+// displayPluginsPromise.then(ps =>
+//   ps.forEach(p => {
+//     console.log('Registering plugin ' + p.getDisplayPluginName())
+//     framework.registerDisplayPlugin(p)
+//   })).catch(e => console.error(`Failed to load plugins: ${e}`))
 
 
- 
+app.get("/", (req, res) => {
+  console.log("Init")
+  renderPage(framework, res)
+})
+
  app.get('/new', (req, res) => {
+   console.log("new analysis")
    framework.startNewAnalysis()
    renderPage(framework, res)
  })
 
  app.get('/registerDataPlugin', (req, res) => {
+   console.log("registered data plugin" + req.query.i as string)
   framework.setCurrentDisplayPlugin(parseInt(req.query.i as string))
 
   renderPage(framework, res)
 })
 
 app.get('/registerDisplayPlugin', (req, res) => {
+  console.log("registered display plugin" + req.query.i as string)
   framework.setCurrentDisplayPlugin(parseInt(req.query.i as string))
 
   renderPage(framework, res)
 })
 
  app.get('/searchImage', (req, res) => {
+  console.log("searched for image. keyword: " + req.query.keyword as string)
    if (req.query.keyword) { framework.makeQuery(req.query.keyword as string) }
    renderPage(framework, res)
  })
  
  app.get('/analysis', (req, res) => {
+   console.log("doing analysis")
    framework.getColorDensityChart()
    renderPage(framework, res)
  })
@@ -74,4 +83,3 @@ app.get('/registerDisplayPlugin', (req, res) => {
  app.listen(port, () => {
    console.log(`server started at http://localhost:${port}`)
  })
- 
