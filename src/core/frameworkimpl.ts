@@ -92,9 +92,11 @@ class ColorFrameworkImpl implements ColorFramework {
                 const colors = outputdata.colors
                 for (let color of colors){
                     const colorname = color.w3c.name
+                    const hexvalue = color.w3c.hex
                     const densityvalue = color.value
                     if (this._selectedImage !== null){
                         this._selectedImage.setColorDensity(colorname, densityvalue)
+                        this._selectedImage.setColorHexes(colorname, hexvalue)
                     } else {
                         throw new Error('no selected image')
                     }
@@ -118,14 +120,22 @@ class ColorFrameworkImpl implements ColorFramework {
      * Sets {@link DataPlugin} with the framework
      */
     setCurrentDataPlugin (pluginIndex: number): void {
-        this._currentDataPlugin = this._dataPlugins[pluginIndex]
+        if (pluginIndex < this._dataPlugins.length){
+            this._currentDataPlugin = this._dataPlugins[pluginIndex]
+        } else {
+            throw new Error("given index out of range")
+        }
     }
 
     /**
      * Sets {@link DisplayPlugin} with the framework
      */
     setCurrentDisplayPlugin (pluginIndex: number): void {
-        this._currentDisplayPlugin = this._displayPlugins[pluginIndex]
+        if (pluginIndex < this._dataPlugins.length){
+            this._currentDisplayPlugin = this._displayPlugins[pluginIndex]
+        } else {
+            throw new Error("given index out of range")
+        }
     }
 
     /**
