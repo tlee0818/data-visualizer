@@ -5,7 +5,6 @@ import nodeFetch from 'node-fetch';
 // on your node server
 const unsplash = createApi({
   accessKey: 'W_5CzAuk9Md1bR7u4agSNo0OwWKr0N5H-8YIpBIWD-w',
-  fetch: nodeFetch,
 });
 
 
