@@ -6,6 +6,7 @@
   "scripts": {
     "compile": "tsc",
     "start": "node dist/src/index.js",
+    "serve": "node dist/src/index.js",
     "dev": "nodemon -e ts --exec \"tsc; node dist/index.js\"",
     "test": "jest"
   },
