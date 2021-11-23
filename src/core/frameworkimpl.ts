@@ -98,6 +98,14 @@ class ColorFrameworkImpl implements ColorFramework {
         plugin.onRegister(this)
         this._displayPlugins.push(plugin)
     }
+    /**
+     * Sets {@link _selectedImage} directly for ease of testing
+     */
+     testImageSetter (image : FrameworkImage): void {
+        this._selectedImage = image
+    }
+
+
 }
 
 export { ColorFrameworkImpl }
