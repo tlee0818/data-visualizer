@@ -1,6 +1,6 @@
 
-import { DataPlugin } from "../dataplugin"
-import {FrameworkImage} from "../frameworkimage"
+import { DataPlugin } from "../../core/dataplugin"
+import {FrameworkImage} from "../../core/frameworkimage"
 
 function newDataPluginStub () : DataPlugin {
     return {
