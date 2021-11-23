@@ -4,12 +4,17 @@
  * it has access to the DOM of the web page
  */
 
+import { FrameworkImage } from './core/frameworkimage'
 import { ColorFrameworkImpl } from './core/frameworkimpl'
 import { loadDataPlugins, loadDisplayPlugin } from './pluginloader'
+import { newPexelApi } from './plugins/dataplugin/pexelapi'
 
 import { newSerpApi } from './plugins/dataplugin/serpapi'
 
-newSerpApi().queryImage("coffee")
+let hi: FrameworkImage = new FrameworkImage("nope", 0, 0, "")
+newPexelApi().queryImage("coffee").then(image => {hi = image})
+setTimeout(function(){ console.log(hi.getName()) }, 1000);
+
 //import { renderPage } from './ui'
 
 /* console.log('starting server')

@@ -25,7 +25,7 @@ interface DataPlugin {
      * @return a list of {@link Image} as a result of the query
      */
 
-  queryImage: (keyword: string) => FrameworkImage
+  queryImage: (keyword: string) => Promise<FrameworkImage>
 
 
 }
