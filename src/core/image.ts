@@ -53,7 +53,7 @@ class FrameworkImage {
        * Set {@param colorName} key's value to {@param densityValue} in integers. 
        */
     public setColorDensity(colorName: string, densityValue: number): void{
-        this._colorDensities.colorName = densityValue
+        this._colorDensities[colorName] = densityValue
     }
 }
 
