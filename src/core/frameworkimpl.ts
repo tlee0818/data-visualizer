@@ -92,9 +92,11 @@ class ColorFrameworkImpl implements ColorFramework {
                 const colors = outputdata.colors
                 for (let color of colors){
                     const colorname = color.w3c.name
+                    const hexvalue = color.w3c.hex
                     const densityvalue = color.value
                     if (this._selectedImage !== null){
                         this._selectedImage.setColorDensity(colorname, densityvalue)
+                        this._selectedImage.setColorHexes(colorname, hexvalue)
                     } else {
                         throw new Error('no selected image')
                     }
