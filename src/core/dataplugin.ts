@@ -25,11 +25,8 @@ interface DataPlugin {
      * @return a list of {@link Image} as a result of the query
      */
 
-<<<<<<< HEAD
   queryImage: (keyword: string) => FrameworkImage
-=======
-  queryImage: (keyword: string) => Image
->>>>>>> fixpackagejson
+
 
 }
 
