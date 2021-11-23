@@ -13,29 +13,10 @@ const ml_options = {
         "Authorization": "Key " + api_key
     }
 }
-const ml_request_data = `{
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": "https://i.imgur.com/ROLJaSi.jpeg"
-          }
-        }
-      }
-    ]
-  }`
 
-//NEED TO CHANGE HOSTNAME AND PORT
-const demo_options = {
-    hostname: "feature.isri.cmu.edu",
-    port: 3003,
-    path: '/',
-    method: 'GET'
-}
-
-
-function runHttpsRequest(options: any, postData: string) {
-    const req = https.request(options, res => {
+  function runHttpsRequest(postData: string): string {
+    let output = ''
+    const req = https.request(ml_options, res => {
         //callback for nonerror results
         console.log(`statusCode: ${res.statusCode}`)
 
@@ -48,6 +29,7 @@ function runHttpsRequest(options: any, postData: string) {
 
         res.on('end', () => {
             console.log(responseBody);
+            output = responseBody.slice()
         });
     })
 
@@ -59,59 +41,7 @@ function runHttpsRequest(options: any, postData: string) {
 
     //finishes sending the request
     req.end()
+    return output
 }
 
-
-function promisifiedHttpRequest(options: any): Promise<string> {
-    return new Promise((resolve, reject) => {
-        const req = http.request(options)
-        req.on('response', async (res) => {
-            res.setEncoding('utf8');
-            let responseBody = '';
-
-            res.on('data', (chunk) => {
-                responseBody += chunk;
-            });
-
-            res.on('end', () => {
-                resolve(responseBody);
-            });
-        })
-        req.on('error', error => {
-            reject(error)
-        })
-        req.end()
-    });
-};
-
-
-
-// run a single request:
-runHttpsRequest(ml_options, ml_request_data)
-
-// run a request asynchronously
-const promise = promisifiedHttpRequest(demo_options)
-promise.then(r => console.log(r))
-
-
-// TODO: run 100 demo requests, 10 in parallel
-let requestsLeft = 100
-let MAX_PARALLEL = 10
-let parallelRunninng = 0
-
-function startRequests() {
-    while (requestsLeft > 0  && parallelRunninng < MAX_PARALLEL){
-        requestsLeft--
-        parallelRunninng++
-
-        const promise: Promise<string> = promisifiedHttpRequest(demo_options)
-
-        promise.then(r => {
-            parallelRunninng--
-            console.log(r)
-            startRequests()
-        })
-    }
-}
-
-startRequests()
+export{ runHttpsRequest }

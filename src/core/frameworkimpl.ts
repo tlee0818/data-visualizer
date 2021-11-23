@@ -1,6 +1,7 @@
 import { DataPlugin } from './dataplugin'
 import { DisplayPlugin } from './displayplugin'
 import { ColorFramework } from './framework'
+import { runHttpsRequest } from './clarifaicall'
 import { FrameworkImage } from './image'
 
 /**
@@ -37,6 +38,26 @@ class ColorFrameworkImpl implements ColorFramework {
 
     fetchColorDensity(): void{
         //use the clarifaicall.ts
+        const imgURL = this._selectedImage?.getImage()
+        const ml_request_data = `{
+            "inputs": [
+              {
+                "data": {
+                  "image": {
+                    "url": "${imgURL}"
+                  }
+                }
+              }
+            ]
+          }`
+        const output = runHttpsRequest(ml_request_data)
+        const parsedOutput = JSON.parse(output)
+        const colors = parsedOutput.outputs[0].data.colors
+        for (let color of colors){
+            const colorname = color.w3c.name
+            const densityvalue = color.value
+            this._selectedImage?.setColorDensity(colorname, densityvalue)
+        }
     }
 
 
