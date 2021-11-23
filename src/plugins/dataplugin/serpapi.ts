@@ -11,7 +11,6 @@ async function setImageDetails(image: FrameworkImage, urlPromise: Promise<Framew
 
 function newSerpApi(): DataPlugin{
 
-    let image: FrameworkImage
 
     return{
         getDataPluginName (): string {
@@ -21,23 +20,11 @@ function newSerpApi(): DataPlugin{
 
         queryImage (keyword: string): FrameworkImage {
 
-            let imgName = ""
-            let imgUrl = ""
-
             const requestURL = `https://serpapi.com/search.json?engine=google&q=${keyword}&google_domain=google.com&gl=us&hl=en&tbm=isch&num=1&ijn=0&api_key=${API_KEY}`
 
             const json = fetch(requestURL).json()
 
-            console.log("name" + json.images_results[0].title)
             return new FrameworkImage(json.images_results[0].title, 0, 0, json.images_results[0].original)
-            console.log("before")
-            setTimeout(() => {
-                
-            }, 6000);
-            console.log("after")
-            console.log("name" + image.getName())
-            //console.log("name" + resultImage.getName)
-            return image
         }
     }
 }
