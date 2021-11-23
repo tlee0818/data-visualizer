@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1637574099579" clover="3.2.0">
-  <project timestamp="1637574099580" name="All files">
-    <metrics statements="45" coveredstatements="24" conditionals="8" coveredconditionals="2" methods="29" coveredmethods="12" elements="82" coveredelements="38" complexity="0" loc="45" ncloc="45" packages="3" files="3" classes="3"/>
+<coverage generated="1637645669056" clover="3.2.0">
+  <project timestamp="1637645669056" name="All files">
+    <metrics statements="64" coveredstatements="28" conditionals="8" coveredconditionals="2" methods="39" coveredmethods="12" elements="111" coveredelements="42" complexity="0" loc="64" ncloc="64" packages="3" files="4" classes="4"/>
     <package name="src">
-      <metrics statements="23" coveredstatements="15" conditionals="4" coveredconditionals="2" methods="18" coveredmethods="10"/>
+      <metrics statements="29" coveredstatements="17" conditionals="4" coveredconditionals="2" methods="21" coveredmethods="10"/>
       <file name="pluginloader.ts" path="/Users/chrishafley/Desktop/17-214/hw6-analytics-framework-reallyreallycoolname/src/pluginloader.ts">
-        <metrics statements="23" coveredstatements="15" conditionals="4" coveredconditionals="2" methods="18" coveredmethods="10"/>
+        <metrics statements="29" coveredstatements="17" conditionals="4" coveredconditionals="2" methods="21" coveredmethods="10"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
@@ -20,19 +20,25 @@
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="43" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
+        <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="46" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.core">
-      <metrics statements="17" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="1"/>
+      <metrics statements="29" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="15" coveredmethods="1"/>
       <file name="frameworkimpl.ts" path="/Users/chrishafley/Desktop/17-214/hw6-analytics-framework-reallyreallycoolname/src/core/frameworkimpl.ts">
         <metrics statements="17" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="1"/>
         <line num="10" count="1" type="stmt"/>
@@ -53,16 +59,32 @@
         <line num="69" count="0" type="stmt"/>
         <line num="73" count="1" type="stmt"/>
       </file>
+      <file name="image.ts" path="/Users/chrishafley/Desktop/17-214/hw6-analytics-framework-reallyreallycoolname/src/core/image.ts">
+        <metrics statements="12" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+      </file>
     </package>
     <package name="src.core.dataplugins">
-      <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+      <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
       <file name="data_plugin_stub.ts" path="/Users/chrishafley/Desktop/17-214/hw6-analytics-framework-reallyreallycoolname/src/core/dataplugins/data_plugin_stub.ts">
-        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
+        <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
       </file>
     </package>
   </project>

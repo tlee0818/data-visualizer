@@ -1,4 +1,4 @@
-class Image {
+class FrameworkImage {
 
     private _name: string
     private _height: number
@@ -57,4 +57,4 @@ class Image {
     }
 }
 
-export { Image }
+export { FrameworkImage }

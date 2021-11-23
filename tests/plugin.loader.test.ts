@@ -10,7 +10,7 @@ const dataPlugins = loadDataPlugins("./core/dataplugins")
 test("print plugins", () => {
 
     return dataPlugins.then(data => {
-        console.log(data)
+        console.log(data, "wtf")
         expect(data.length).toBeGreaterThan(0)
         })
     })

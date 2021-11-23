@@ -1,13 +1,13 @@
 import { DataPlugin } from './dataplugin'
 import { DisplayPlugin } from './displayplugin'
 import { ColorFramework } from './framework'
-import { Image } from './image'
+import { FrameworkImage } from './image'
 
 /**
  * The framework core implementation.
  */
 class ColorFrameworkImpl implements ColorFramework {
-    private _selectedImage: Image | null = null
+    private _selectedImage: FrameworkImage | null = null
     private _currentDataPlugin: DataPlugin | null = null
     private _currentDisplayPlugin: DisplayPlugin | null = null
     private _dataPlugins: DataPlugin[] = []
@@ -26,7 +26,7 @@ class ColorFrameworkImpl implements ColorFramework {
         }
     }
 
-    getColorDensityChart(image: Image): string{
+    getColorDensityChart(image: FrameworkImage): string{
         if (this._currentDisplayPlugin === null){
             return "Chart Not Available"
         }
