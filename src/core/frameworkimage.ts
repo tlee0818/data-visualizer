@@ -22,12 +22,20 @@ class FrameworkImage {
     public getName(): string{
         return this._name
     }
+
+    public setName(name: string): void{
+        this._name = name
+    }
   
     /**
        * Gets the height of image
        */
     public getHeight(): number{
         return this._height
+    }
+
+    public setHeight(height: number): void{
+        this._height = height
     }
   
     /**
@@ -37,9 +45,18 @@ class FrameworkImage {
         return this._width
     }
 
+    public setWidth(width: number): void{
+        this._width = width
+    }
+
     //bytes or url
     public getImage(): string{
         return this._imageUrl
+    }
+
+    //bytes or url
+    public setImage(url: string): void{
+        this._imageUrl = url
     }
 
     /**
