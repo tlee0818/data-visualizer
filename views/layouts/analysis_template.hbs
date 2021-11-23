@@ -48,19 +48,21 @@
             Data Plugins
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          {{#each dataPlugins}}
-          <a class="dropdown-item" href="{{link}}">{{name}}</a>
-          {{/each}}
+            {{#each dataPlugins}}
+            <a class="dropdown-item" href="{{link}}">{{name}}</a>
+            {{/each}}
           </div>
         </div>
         {{/if}}
       </div>
       <div class="col">
+        {{!-- might not work --}}
         <form action="/searchImage/" method="get">
-          <div class="form-group">
+          <form action="/searchImage">
             <label for="keyword">Keyword</label>
-            <input type="text" class="form-control" id="keyword">
-          </div>
+            <input type="text" id="keyword" name="keyword"><br><br>
+            <input type="submit" value="Submit">
+          </form>
           <div class="col">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
@@ -69,6 +71,7 @@
       <div class="col" id="displayplugin">
         {{#if currentDisplayPluginName}}
         <h2>{{currentDisplayPluginName}}</h2>
+        <button href="/analysis" class="btn btn-primary">Do Analysis</button>
         {{else}}
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -76,15 +79,16 @@
             Display Plugins
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          {{#each displayPlaygins}}
-          <a class="dropdown-item" href="{{link}}">{{name}}</a>
-          {{/each}}
+            {{#each displayPlaygins}}
+            <a class="dropdown-item" href="{{link}}">{{name}}</a>
+            {{/each}}
           </div>
         </div>
         {{/if}}
       </div>
     </div>
-
+  </div>
+  <div class="container">
     <div class="row">
       <div class="col">
         {{#if imageUrl}}
@@ -100,6 +104,12 @@
         {{else}}
         <h3>Analysis yet to be done</h3>
         {{/if}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-9">
+        <button href="/new" class="btn btn-primary">Start Over</button>
       </div>
     </div>
   </div>
