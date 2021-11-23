@@ -1,5 +1,5 @@
 import { ColorFramework } from './framework'
-import { Image } from './image'
+import { FrameworkImage } from './image'
 
 /**
  * The game plug-in interface that plug-ins use to implement and register games
@@ -12,7 +12,7 @@ interface DisplayPlugin {
      * gets the chart @param image color density values as html string
      */
   
-  getChart: (image: Image) => string
+  getChart: (image: FrameworkImage) => string
 
   /**
      * loads the necessary javascript for this display plugin
