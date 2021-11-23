@@ -42,19 +42,10 @@ class ColorFrameworkImpl implements ColorFramework {
 
     makeQuery(keyword: string){
         if (this._currentDataPlugin === null){
-            return
+            throw new Error("current data plugin is not set.")
         }
         else{
             this._selectedImage = this._currentDataPlugin.queryImage(keyword)
-        }
-    }
-
-    getImage(): FrameworkImage | null{
-        if (this._selectedImage === null){
-            return null
-        }
-        else{
-            return this._selectedImage
         }
     }
 
@@ -152,14 +143,6 @@ class ColorFrameworkImpl implements ColorFramework {
         plugin.onRegister(this)
         this._displayPlugins.push(plugin)
     }
-    /**
-     * Sets {@link _selectedImage} directly for ease of testing
-     */
-     testImageSetter (image : FrameworkImage): void {
-        this._selectedImage = image
-    }
-
-
 }
 
 export { ColorFrameworkImpl }
