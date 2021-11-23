@@ -14,10 +14,6 @@ interface DisplayPlugin {
   
   getChart: (image: FrameworkImage) => string
 
-  /**
-     * loads the necessary javascript for this display plugin
-     */
-
     /**
          * Called (only once) when the plug-in is first registered with the
          * framework, giving the plug-in a chance to perform any initial set-up
