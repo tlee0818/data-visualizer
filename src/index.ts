@@ -4,10 +4,12 @@
  * it has access to the DOM of the web page
  */
 
-import express from 'express'
-import exphbs from 'express-handlebars'
 import { ColorFrameworkImpl } from './core/frameworkimpl'
 import { loadDataPlugins, loadDisplayPlugin } from './pluginloader'
+
+import { newSerpApi } from './plugins/dataplugin/serpapi'
+
+newSerpApi().queryImage("coffee")
 //import { renderPage } from './ui'
 
 /* console.log('starting server')

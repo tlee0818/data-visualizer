@@ -1,4 +1,4 @@
-import { FrameworkImage } from './image'
+import { FrameworkImage } from './frameworkimage'
 /**
  * The interface by which {@link DataPlugin} {@link DisplayPlugin}instances can directly interact
  * with the game framework.

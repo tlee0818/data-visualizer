@@ -49,9 +49,11 @@ class FrameworkImage {
     public getColorDensities(): { [colorName: string]: number }{
         return this._colorDensities
     }
+
     public getColorHexes(): { [colorName: string]: string }{
         return this._colorHexes
     }
+
     /**
        * Set {@param colorName} key's value to {@param densityValue} in integers. 
        */

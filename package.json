@@ -2,10 +2,10 @@
   "name": "hw6",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "compile": "tsc",
-    "serve": "node dist/index.js",
+    "start": "node dist/src/index.js",
     "dev": "nodemon -e ts --exec \"tsc; node dist/index.js\"",
     "test": "jest"
   },
@@ -13,8 +13,10 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^27.0.1",
+    "@types/node-fetch": "^3.0.1",
     "jest": "^27.0.6",
     "nodemon": "^2.0.13",
+    "node-fetch": "^3.1.0",
     "ts-jest": "^27.0.5",
     "ts-standard": "^10.0.0",
     "typescript": "^4.4.2"
@@ -25,6 +27,7 @@
     "@types/node": "^16.7.4",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
+    "node-fetch": "^3.1.0",
     "handlebars": "^4.7.7",
     "uglify-js": "^3.14.2",
     "wordcloud": "^1.2.2"
