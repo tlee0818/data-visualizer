@@ -31,6 +31,7 @@ const ml_request_data = `{
 
 class ColorFrameworkImpl implements ColorFramework {
     private _selectedImage: FrameworkImage | null = null
+    private _chartHtmlString: string = ""
     private _currentDataPlugin: DataPlugin | null = null
     private _currentDisplayPlugin: DisplayPlugin | null = null
     private _dataPlugins: DataPlugin[] = []
@@ -54,12 +55,15 @@ class ColorFrameworkImpl implements ColorFramework {
         }
     }
 
-    getColorDensityChart(image: FrameworkImage): string{
+    getColorDensityChart(): void{
         if (this._currentDisplayPlugin === null){
-            return "Chart Not Available"
+            this._chartHtmlString = "Chart Not Available"
+        }
+        else if (this._selectedImage === null){
+            this._chartHtmlString = "Image Not Selected"
         }
         else{
-            return this._currentDisplayPlugin.getChart(image)
+            this._chartHtmlString = this._currentDisplayPlugin.getChart(this._selectedImage)
         }
     }
 
@@ -109,6 +113,13 @@ class ColorFrameworkImpl implements ColorFramework {
         
         //finishes sending the request
         req.end()
+    }
+
+    //reset current plugins and image
+    startNewAnalysis(): void{
+        this._selectedImage = null
+        this._currentDataPlugin = null
+        this._currentDisplayPlugin = null
     }
 
 

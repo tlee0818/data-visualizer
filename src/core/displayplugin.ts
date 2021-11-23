@@ -22,7 +22,9 @@ interface DisplayPlugin {
          * @param framework The {@link ColorFramework} instance with which the plug-in
          *                  was registered.
          */
-    onRegister: (framework: ColorFramework) => void
+  onRegister: (framework: ColorFramework) => void
+
+  getDisplayPluginName: () => string
   
 }
 

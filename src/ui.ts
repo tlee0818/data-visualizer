@@ -1,12 +1,10 @@
-/**
-
-import { GameFrameworkImpl } from './core/frameworkimpl'
+import { ColorFrameworkImpl } from './core/frameworkimpl'
 import { Response } from 'express-serve-static-core'
 
-
+/**
  * creates the data to fill into the template
-
-function genPage (framework: GameFrameworkImpl): any {
+ */
+function genPage (framework: ColorFrameworkImpl): any {
   // console.log("update page")
 
   interface PluginEntry { name: string, link: string }
@@ -43,9 +41,8 @@ function genPage (framework: GameFrameworkImpl): any {
   }
 }
 
-function renderPage (framework: GameFrameworkImpl, res: Response<any, Record<string, any>, number>): void {
+function renderPage (framework: ColorFrameworkImpl, res: Response<any, Record<string, any>, number>): void {
   res.render('main', genPage(framework))
 }
 
 export { renderPage }
-*/

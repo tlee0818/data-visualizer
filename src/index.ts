@@ -7,7 +7,7 @@
  import express from 'express'
  import exphbs from 'express-handlebars'
  import { ColorFrameworkImpl } from './core/frameworkimpl'
- import { loadDataPlugins } from './pluginloader'
+ import { loadDataPlugins, loadDisplayPlugin } from './pluginloader'
  import { renderPage } from './ui'
  
  console.log('starting server')
@@ -16,39 +16,58 @@
  
  // setting up to use handlebars for templates by default
  app.engine('hbs', exphbs({
-   defaultLayout: 'game_template',
+   defaultLayout: 'analysis_template',
    extname: '.hbs'
  }))
  app.set('view engine', 'hbs')
  
  const DATA_PLUGIN_DIR = 'plugins/dataplugin'
- 
+ const DISPLAY_PLUGIN_DIR = 'plugins/displayplugin'
  // game always holds the current version of the game
  // updates on actions and when starting a new game
  const framework = new ColorFrameworkImpl()
- const pluginsPromise = loadDataPlugins(DATA_PLUGIN_DIR)
- pluginsPromise.then(ps =>
-   ps.forEach(p => {
-     console.log('Registering plugin ' + p.getGameName())
-     framework.registerPlugin(p)
-   })).catch(e => console.error(`Failed to load plugins: ${e}`))
+ const dataPluginsPromise = loadDataPlugins(DATA_PLUGIN_DIR)
+ const displayPluginsPromise = loadDisplayPlugin(DISPLAY_PLUGIN_DIR)
+
+dataPluginsPromise.then(ps =>
+  ps.forEach(p => {
+    console.log('Registering plugin ' + p.getDataPluginName())
+    framework.registerDataPlugin(p)
+  })).catch(e => console.error(`Failed to load plugins: ${e}`))
+
+displayPluginsPromise.then(ps =>
+  ps.forEach(p => {
+    console.log('Registering plugin ' + p.getDisplayPluginName())
+    framework.registerDisplayPlugin(p)
+  })).catch(e => console.error(`Failed to load plugins: ${e}`))
+
+
  
- app.get('/plugin', (req, res) => {
-   if (req.query.i) { framework.startNewGame(parseInt(req.query.i as string)) }
+ app.get('/new', (req, res) => {
+   framework.startNewAnalysis()
+   renderPage(framework, res)
+ })
+
+ app.get('/registerDataPlugin', (req, res) => {
+  framework.setCurrentDisplayPlugin(parseInt(req.query.displayI as string))
+
+  renderPage(framework, res)
+})
+
+app.get('/registerDisplayPlugin', (req, res) => {
+  framework.setCurrentDisplayPlugin(parseInt(req.query.displayI as string))
+
+  renderPage(framework, res)
+})
+
+const keyword 
+ app.get('/searchImage', (req, res) => {
+   if (req.query.keyword) { framework.makeQuery(req.query.keyword as string) }
    renderPage(framework, res)
  })
  
- app.get('/play', (req, res) => {
-   if (req.query.x && req.query.y) { framework.playMove(parseInt(req.query.x as string), parseInt(req.query.y as string)) }
-   renderPage(framework, res)
- })
- 
- app.get('/undo', (req, res) => {
-   // ...
-   renderPage(framework, res)
- })
- 
- app.get('/', (req, res) => {
+ app.get('/analysis', (req, res) => {
+   framework.getColorDensityChart()
    renderPage(framework, res)
  })
  
