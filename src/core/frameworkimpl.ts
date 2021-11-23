@@ -27,7 +27,7 @@ class ColorFrameworkImpl implements ColorFramework {
         }
     }
 
-    getImage(): Image | null{
+    getImage(): FrameworkImage | null{
         if (this._selectedImage === null){
             return null
         }
