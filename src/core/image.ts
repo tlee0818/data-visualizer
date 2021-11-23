@@ -5,7 +5,7 @@ class FrameworkImage {
     private _width: number
     private _imageUrl: string
     private _colorDensities: { [colorName: string]: number }
-
+    private _colorHexes: { [colorName: string]: string }
 
 
     constructor(name: string, height: number, width: number, imageUrl: string){
@@ -14,6 +14,7 @@ class FrameworkImage {
         this._width = width
         this._imageUrl = imageUrl
         this._colorDensities = {}
+        this._colorHexes = {}
     }
 
     /**
@@ -48,12 +49,17 @@ class FrameworkImage {
     public getColorDensities(): { [colorName: string]: number }{
         return this._colorDensities
     }
-    
+    public getColorHexes(): { [colorName: string]: string }{
+        return this._colorHexes
+    }
     /**
        * Set {@param colorName} key's value to {@param densityValue} in integers. 
        */
     public setColorDensity(colorName: string, densityValue: number): void{
-        this._colorDensities.colorName = densityValue
+        this._colorDensities[colorName] = densityValue
+    }
+    public setColorHexes(colorName: string, hexValue: string): void{
+        this._colorHexes[colorName] = hexValue
     }
 }
 
