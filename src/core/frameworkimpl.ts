@@ -22,7 +22,16 @@ class ColorFrameworkImpl implements ColorFramework {
             return
         }
         else{
-            this._selectedImage = this._currentDataPlugin.queryImages(keyword)
+            this._selectedImage = this._currentDataPlugin.queryImage(keyword)
+        }
+    }
+
+    getImage(): Image | null{
+        if (this._selectedImage === null){
+            return null
+        }
+        else{
+            return this._selectedImage
         }
     }
 
