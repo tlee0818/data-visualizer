@@ -2,7 +2,7 @@ import { DataPlugin } from './dataplugin'
 import { DisplayPlugin } from './displayplugin'
 import { ColorFramework } from './framework'
 import { runHttpsRequest } from './clarifaicall'
-import { FrameworkImage } from './image'
+import { FrameworkImage } from './frameworkimage'
 
 /**
  * The framework core implementation.
