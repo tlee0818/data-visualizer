@@ -67,6 +67,10 @@ class ColorFrameworkImpl implements ColorFramework {
         }
     }
 
+    getChartHtmlString(): string{
+        return this._chartHtmlString
+    }
+
     fetchColorDensity(): void{
         //use the clarifaicall.ts
         if (this._selectedImage !== null){
@@ -120,6 +124,26 @@ class ColorFrameworkImpl implements ColorFramework {
         this._selectedImage = null
         this._currentDataPlugin = null
         this._currentDisplayPlugin = null
+    }
+
+    getRegisteredDataPluginName (): string[] {
+        return this._dataPlugins.map(p => p.getDataPluginName())
+    }
+
+    getRegisteredDisplayPluginName (): string[] {
+        return this._displayPlugins.map(p => p.getDisplayPluginName())
+    }
+
+    getCurrentDataPlugin (): DataPlugin | null {
+        return this._currentDataPlugin
+    }
+
+    getCurrentDisplayPlugin (): DisplayPlugin | null {
+        return this._currentDisplayPlugin
+    }
+
+    getSelectedImage (): FrameworkImage | null {
+        return this._selectedImage
     }
 
 

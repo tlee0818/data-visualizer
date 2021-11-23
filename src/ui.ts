@@ -8,36 +8,32 @@ function genPage (framework: ColorFrameworkImpl): any {
   // console.log("update page")
 
   interface PluginEntry { name: string, link: string }
-  interface Cell { text: string | null, clazz: string, link: string }
 
-  const cells: Cell[] = []
-  const width = framework.getGridWidth()
-  for (let x = 0; x < width; x++) {
-    for (let y = 0; y < framework.getGridHeight(); y++) {
-      const cell: Cell = {
-        text: framework.getSquare(x, y),
-        link: `/play?x=${x}&y=${y}`,
-        clazz: framework.isSquarePlayable(x, y)
-      }
-      cells.push(cell)
-    }
+  const dataPlugins: PluginEntry[] = []
+  const dataPluginNames = framework.getRegisteredDataPluginName()
+  for (let i = 0; i < dataPluginNames.length; i++) {
+    dataPlugins.push({ name: dataPluginNames[i], link: 'registerDataPlugin?i=' + i })
   }
 
-  const plugins: PluginEntry[] = []
-  const pluginNames = framework.getRegisteredPluginName()
-  for (let i = 0; i < pluginNames.length; i++) {
-    plugins.push({ name: pluginNames[i], link: '/plugin?i=' + i })
+  const displayPlugins: PluginEntry[] = []
+  const diplayPluginNames = framework.getRegisteredDisplayPluginName()
+  for (let i = 0; i < diplayPluginNames.length; i++) {
+    displayPlugins.push({ name: diplayPluginNames[i], link: '/registerDisplayPlugin?i=' + i })
   }
-  const numColStyle = Array(framework.getGridWidth()).fill('auto').join(' ')
+
+  const img = framework.getSelectedImage()
+  const imageUrl = img === null ? null : img.getImage()
+
+  const keywordLink = "/searchImage?keyword="
 
   return {
-    name: framework.getGameName(),
-    footer: framework.getFooter(),
-    cells: cells,
-    plugins: plugins,
-    numColStyle: numColStyle,
-    currentPlayer: framework.getCurrentPlayerName(),
-    gameOverMsg: framework.getGameOverMsg()
+    dataPlugins: dataPlugins,
+    currentDataPlugin: framework.getCurrentDataPlugin(),
+    keywordLink: keywordLink,
+    displayPlugins: displayPlugins,
+    currentDisplayPlugin: framework.getCurrentDisplayPlugin(),
+    imageUrl: imageUrl,
+    chart: framework.getChartHtmlString()
   }
 }
 

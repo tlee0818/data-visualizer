@@ -49,13 +49,13 @@ displayPluginsPromise.then(ps =>
  })
 
  app.get('/registerDataPlugin', (req, res) => {
-  framework.setCurrentDisplayPlugin(parseInt(req.query.displayI as string))
+  framework.setCurrentDisplayPlugin(parseInt(req.query.i as string))
 
   renderPage(framework, res)
 })
 
 app.get('/registerDisplayPlugin', (req, res) => {
-  framework.setCurrentDisplayPlugin(parseInt(req.query.displayI as string))
+  framework.setCurrentDisplayPlugin(parseInt(req.query.i as string))
 
   renderPage(framework, res)
 })
