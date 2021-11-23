@@ -40,12 +40,17 @@ class ColorFrameworkImpl implements ColorFramework {
         
     }
 
-    makeQuery(keyword: string){
+    async makeQuery(keyword: string): Promise<void>{
         if (this._currentDataPlugin === null){
             throw new Error("current data plugin is not set.")
         }
         else{
-            this._selectedImage = this._currentDataPlugin.queryImage(keyword)
+            const imgPromise = await this._currentDataPlugin.queryImage(keyword)
+                    .then(image => {
+                        this._selectedImage = image
+                    })
+            
+            return imgPromise
         }
     }
 

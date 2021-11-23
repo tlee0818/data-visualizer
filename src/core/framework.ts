@@ -7,7 +7,7 @@ interface ColorFramework {
   /**
      * query images and set them in the private variable
      */
-  makeQuery: (keyword: string) => void
+  makeQuery: (keyword: string) => Promise<void>
 
 
   /**
