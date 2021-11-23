@@ -1,6 +1,7 @@
 import { DisplayPlugin } from "../../core/displayplugin";
 import { FrameworkImage } from "../../core/frameworkimage";
 import { ColorFramework } from "../../core/framework";
+import { parse } from "path/posix";
 
 
 function newCloudPlugin () : DisplayPlugin {
@@ -12,14 +13,34 @@ function newCloudPlugin () : DisplayPlugin {
             L.push([color, value * 10])
           });
         return L
-    let createHexDictionary = function (image : FrameworkImage) : 
+        }
+    let createHexDictionary = function (image: FrameworkImage) : {[colorName: string]: string} {
+        return image.getColorHexes()
     }
+    let makeWordcloudOptions = function (image: FrameworkImage)  {
+        const listOption = parseImageToList(image)
+        const hexDict = createHexDictionary(image)
+        let createColorOption = function (colorName : string) {
+            return hexDict[colorName]
+        }
+        return {list : listOption, color : createColorOption}
+    }
+
        return {
         /**
          * gets the chart @param image color density values as html string
          */
-        getChart: function (image: FrameworkImage) : {[colorName: string]: string} {
-            
+
+        /** currently a stub.
+         * step 1: create html document
+         * step 2: load wordcloud2.js
+         * step 3: run WordCloud(document.getElementById('my_canvas'), options ); with
+         * the options generated below
+         * step 4: get returnable HTML doc string
+         */       
+        getChart: function (image: FrameworkImage) : string {
+            const options = makeWordcloudOptions(image)
+            return ""
         },
 
 
