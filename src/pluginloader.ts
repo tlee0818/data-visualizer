@@ -49,9 +49,9 @@ import path from 'path'
     files.filter(f => f.isFile() && f.name.endsWith('.js')))
   const modulesPr = jsFilesPr.then(jsFiles =>
     jsFiles.map(f => require(path.join(dir, f.name))))
-  //filesPr.then(files => console.log(files))
-  //jsFilesPr.then(files => console.log(files))
-  //modulesPr.then(files => console.log(files)).catch(error => console.log(error))
+  filesPr.then(files => console.log(files))
+  jsFilesPr.then(files => console.log(files))
+  modulesPr.then(files => console.log(files)).catch(error => console.log(error))
   return await modulesPr.then(initFunctions =>
     initFunctions.map(m => {
       const n = m as object
