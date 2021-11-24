@@ -9,5 +9,5 @@ test("We should be able to get a name.", () => {
 test("We should be able to get FrameworkImage from queryImage.", () => {
   const promiseOutput = unsplashapi.queryImage("banana")
   promiseOutput
-  .then(img => expect(img instanceof FrameworkImage).toBeTruthy())
+  .then(img => expect(img).toBeInstanceOf(FrameworkImage))
 })
