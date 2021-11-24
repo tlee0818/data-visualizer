@@ -76,7 +76,7 @@
             Display Plugins
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {{#each displayPlaygins}}
+            {{#each displayPlugins}}
             <a class="dropdown-item" href="{{link}}">{{name}}</a>
             {{/each}}
           </div>
@@ -89,7 +89,7 @@
     <div class="row">
       <div class="col">
         {{#if imageUrl}}
-        <img src="{{imageUrl}}" alt="{{imageName}}" width="500">
+        <img src="{{imageUrl}}" width="500">
         {{else}}
         <h3>Image yet to be chosen</h3>
         {{/if}}
