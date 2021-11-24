@@ -24,7 +24,7 @@ function newPexelApi(): DataPlugin{
                 })
                 .then(photos => {
                     const imgName = `Photo By ${photos.photos[0].photographer}`
-                    const imgUrl = photos.photos[0].url
+                    const imgUrl = photos.photos[0].src.original
                     const imgHeight = photos.photos[0].height
                     const imgWidth = photos.photos[0].width
                     return new FrameworkImage(imgName, imgHeight, imgWidth, imgUrl)
