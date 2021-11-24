@@ -1,7 +1,7 @@
 import { resolve } from "path/posix";
 import { DataPlugin } from "../../core/dataplugin";
 import { FrameworkImage } from "../../core/frameworkimage";
-const fetch = require('node-fetch');
+import {fetch} from "node-fetch"
 
 const API_KEY = 'd03c0cf76d8b77cd3f89934eab1943039b6ce2d649e75d87f8e8b002f2c4e29c'
 

@@ -1,6 +1,6 @@
-import { DisplayPlugin } from "../../../core/displayplugin";
-import { FrameworkImage } from "../../../core/frameworkimage";
-import { ColorFramework } from "../../../core/framework";
+import { DisplayPlugin } from "../../core/displayplugin";
+import { FrameworkImage } from "../../core/frameworkimage";
+import { ColorFramework } from "../../core/framework";
 
 
 function newCloudPlugin () : DisplayPlugin {

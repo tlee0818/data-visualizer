@@ -16,17 +16,21 @@ import path from 'path'
   const dir = path.join(__dirname, targetDir)
   const filesPr = readdir(dir, { withFileTypes: true })
   const jsFilesPr = filesPr.then(files =>
-    files.filter(f => f.isFile() && f.name.endsWith('.ts')))
+    files.filter(f => f.isFile() && f.name.endsWith('.js')))
   const modulesPr = jsFilesPr.then(jsFiles =>
     jsFiles.map(f => require(path.join(dir, f.name))))
-  filesPr.then(files => console.log(files))
-  jsFilesPr.then(files => console.log(files))
-  console.log("wtf1")
-  modulesPr.then(files => console.log(files)).catch(error => console.log(error))
-  console.log("wtf2")
+  //filesPr.then(files => console.log(files))
+  //jsFilesPr.then(files => console.log(files))
+  //modulesPr.then(files => console.log(files)).catch(error => console.log(error))
   return await modulesPr.then(initFunctions =>
     initFunctions.map(m => {
-      return m.exportObj.pluginInit() as DataPlugin
+      const n = m as object
+      console.log(n, "wtf")
+      const obj = Object.keys(n).map(k => n[k])
+      console.log(obj)
+      const func = obj[0]
+      const plug = func()
+      return plug as DataPlugin
     }))
   }
 /**
@@ -38,19 +42,25 @@ import path from 'path'
  * @param targetDir where to look for plugins
  * @returns
  */
- async function loadDisplayPlugin (targetDir: string): Promise<DisplayPlugin[]> {
+ async function loadDisplayPlugins (targetDir: string): Promise<DisplayPlugin[]> {
   const dir = path.join(__dirname, targetDir)
   const filesPr = readdir(dir, { withFileTypes: true })
   const jsFilesPr = filesPr.then(files =>
-    files.filter(f => f.isFile() && f.name.endsWith('.ts')))
+    files.filter(f => f.isFile() && f.name.endsWith('.js')))
   const modulesPr = jsFilesPr.then(jsFiles =>
     jsFiles.map(f => require(path.join(dir, f.name))))
-  filesPr.then(files => console.log(files))
-  jsFilesPr.then(files => console.log(files))
-  modulesPr.then(files => console.log(files))
+  //filesPr.then(files => console.log(files))
+  //jsFilesPr.then(files => console.log(files))
+  //modulesPr.then(files => console.log(files)).catch(error => console.log(error))
   return await modulesPr.then(initFunctions =>
     initFunctions.map(m => {
-      return m.exportObj.pluginInit() as DisplayPlugin
+      const n = m as object
+      console.log(n, "wtf")
+      const obj = Object.keys(n).map(k => n[k])
+      console.log(obj)
+      const func = obj[0]
+      const plug = func()
+      return plug as DisplayPlugin
     }))
   }
 // test this:
@@ -58,4 +68,4 @@ import path from 'path'
 // p.then(console.log)
 // p.catch(console.error)
 
-export { loadDataPlugins, loadDisplayPlugin }
+export { loadDataPlugins, loadDisplayPlugins }

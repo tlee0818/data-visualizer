@@ -7,7 +7,7 @@
  import express from 'express'
  import exphbs from 'express-handlebars'
  import { ColorFrameworkImpl } from './core/frameworkimpl'
- import { loadDataPlugins, loadDisplayPlugin } from './pluginloader'
+ import { loadDataPlugins, loadDisplayPlugins } from './pluginloader'
  import { renderPage } from './ui'
  
  console.log('starting server')
@@ -27,19 +27,21 @@
  // updates on actions and when starting a new game
  const framework = new ColorFrameworkImpl()
  const dataPluginsPromise = loadDataPlugins(DATA_PLUGIN_DIR)
- //const displayPluginsPromise = loadDisplayPlugin(DISPLAY_PLUGIN_DIR)
+ const displayPluginsPromise = loadDisplayPlugins(DISPLAY_PLUGIN_DIR)
 
-dataPluginsPromise.then(ps =>
+dataPluginsPromise.then(ps => {
   ps.forEach(p => {
+    console.log(p, "p")
     console.log('Registering plugin ' + p.getDataPluginName())
     framework.registerDataPlugin(p)
-  })).catch(e => console.error(`Failed to load plugins: ${e}`))
+  })}).catch(e => console.error(`Failed to load plugins: ${e}`))
 
-// displayPluginsPromise.then(ps =>
-//   ps.forEach(p => {
-//     console.log('Registering plugin ' + p.getDisplayPluginName())
-//     framework.registerDisplayPlugin(p)
-//   })).catch(e => console.error(`Failed to load plugins: ${e}`))
+displayPluginsPromise.then(ps =>
+   ps.forEach(p => {
+    console.log(p, "p")
+     console.log('Registering plugin ' + p.getDisplayPluginName())
+     framework.registerDisplayPlugin(p)
+   })).catch(e => console.error(`Failed to load plugins: ${e}`))
 
 
 app.get("/", (req, res) => {

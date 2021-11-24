@@ -5,7 +5,7 @@ import { loadDataPlugins } from "../src/pluginloader";
 
 const frame = new ColorFrameworkImpl
 
-const dataPlugins = loadDataPlugins("./core/dataplugins")
+const dataPlugins = loadDataPlugins("./plugins/dataplugin")
 
 test("print plugins", () => {
 

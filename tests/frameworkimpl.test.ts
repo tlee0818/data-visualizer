@@ -1,8 +1,8 @@
-import { exportObj } from '../src/plugins/dataplugin/data_plugin_stub'
+import { newDataPluginStub } from '../src/plugins/dataplugin/data_plugin_stub'
 import { ColorFrameworkImpl } from '../src/core/frameworkimpl'
 
 const newFrame = new ColorFrameworkImpl
-const dp = exportObj.pluginInit()
+const dp = newDataPluginStub()
 
 test("We should not be able to set a data plugin initially because nothing is registered.", () => {
   let result = true
@@ -37,6 +37,7 @@ test("We should be able to fetch color density without an error.", () => {
   try{
     newFrame.fetchColorDensity()
   } catch(error){
+    console.log(error)
     result = false
   }
   expect(result).toBeTruthy()

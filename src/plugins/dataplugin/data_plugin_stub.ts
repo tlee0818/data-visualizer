@@ -16,5 +16,5 @@ function newDataPluginStub () : DataPlugin {
     }
 }
 
-const exportObj = {pluginInit : newDataPluginStub, name : "newDataPluginStub"}
-export { exportObj }
+
+export { newDataPluginStub }
