@@ -31,7 +31,7 @@ const ml_request_data = `{
 
 class ColorFrameworkImpl implements ColorFramework {
     private _selectedImage: FrameworkImage | null = null
-    private _chartHtmlString: string = "<html><head><title>titleTest</title></head><body><a href='test0'>test01</a><a href='test1'>test02</a><a href='test2'>test03</a></body></html>"
+    private _chartHtmlString: string = ""
     private _currentDataPlugin: DataPlugin | null = null
     private _currentDisplayPlugin: DisplayPlugin | null = null
     private _dataPlugins: DataPlugin[] = []
@@ -43,7 +43,7 @@ class ColorFrameworkImpl implements ColorFramework {
 
     async makeQuery(keyword: string): Promise<void>{
         if (this._currentDataPlugin === null){
-            throw new Error("current data plugin is not set.")
+            return
         }
         else{
             const imgPromise = await this._currentDataPlugin.queryImage(keyword)
@@ -76,7 +76,7 @@ class ColorFrameworkImpl implements ColorFramework {
         if (this._selectedImage !== null){
             const imgURL = this._selectedImage.getImage()
         } else {
-            throw new Error('no selected image')
+            return
         }
         const req = https.request(ml_options, res => {
         //callback for nonerror results
@@ -102,7 +102,7 @@ class ColorFrameworkImpl implements ColorFramework {
                         this._selectedImage.setColorDensity(colorname, densityvalue)
                         this._selectedImage.setColorHexes(colorname, hexvalue)
                     } else {
-                        throw new Error('no selected image')
+                        return
                     }
                 }
             }
@@ -154,7 +154,7 @@ class ColorFrameworkImpl implements ColorFramework {
         if (pluginIndex < this._dataPlugins.length){
             this._currentDataPlugin = this._dataPlugins[pluginIndex]
         } else {
-            throw new Error("given index out of range")
+            return
         }
     }
 
@@ -165,7 +165,7 @@ class ColorFrameworkImpl implements ColorFramework {
         if (pluginIndex < this._dataPlugins.length){
             this._currentDisplayPlugin = this._displayPlugins[pluginIndex]
         } else {
-            throw new Error("given index out of range")
+            return
         }
     }
 

@@ -28,7 +28,7 @@ function newSerpApi(): DataPlugin{
             const resultPromise = await fetch(requestURL)
                 .then(res => {
                     if (!res.ok) { // res.status >= 200 && res.status < 300
-                        throw new Error(res.statusText)
+                        return
                     }
                     else{
                         return res.json()

@@ -55,7 +55,6 @@ import path from 'path'
   return await modulesPr.then(initFunctions =>
     initFunctions.map(m => {
       const n = m as object
-      console.log(n, "wtf")
       const obj = Object.keys(n).map(k => n[k])
       console.log(obj)
       const func = obj[0]
