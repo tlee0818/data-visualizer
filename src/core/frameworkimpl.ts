@@ -31,7 +31,7 @@ const ml_request_data = `{
 
 class ColorFrameworkImpl implements ColorFramework {
     private _selectedImage: FrameworkImage | null = null
-    private _chartHtmlString: string = ""
+    private _chartHtmlString: string = "<html><head><title>titleTest</title></head><body><a href='test0'>test01</a><a href='test1'>test02</a><a href='test2'>test03</a></body></html>"
     private _currentDataPlugin: DataPlugin | null = null
     private _currentDisplayPlugin: DisplayPlugin | null = null
     private _dataPlugins: DataPlugin[] = []

@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 
  app.get('/registerDataPlugin', (req, res) => {
    console.log("registered data plugin" + req.query.i as string)
-  framework.setCurrentDisplayPlugin(parseInt(req.query.i as string))
+  framework.setCurrentDataPlugin(parseInt(req.query.i as string))
 
   renderPage(framework, res)
 })
