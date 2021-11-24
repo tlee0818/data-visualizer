@@ -38,24 +38,24 @@ function newBarPlugin () : DisplayPlugin {
                 const colorName = columns[i][0] as string
                 colors[i] = dict[colorName]
             }
-            var chart = c3.generate({
-                bindto : "chart",
-                data: {
-                    columns: columns as [string, ...c3.Primitive[]][],
-                    type : 'bar',
-                    onclick: function (d, i) { console.log("onclick", d, i); },
-                    onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-                    onmouseout: function (d, i) { console.log("onmouseout", d, i); }
-                },
-                color: {
-                    pattern: colors
-                  }
-            })
+            // var chart = c3.generate({
+            //     bindto : "chart",
+            //     data: {
+            //         columns: columns as [string, ...c3.Primitive[]][],
+            //         type : 'bar',
+            //         onclick: function (d, i) { console.log("onclick", d, i); },
+            //         onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+            //         onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+            //     },
+            //     color: {
+            //         pattern: colors
+            //       }
+            // })
             return "<div id=chart></div>"
         },
 
 
-        getDisplayPluginName: () => "Pie Chart",
+        getDisplayPluginName: () => "Bar Chart",
 
 
         /**

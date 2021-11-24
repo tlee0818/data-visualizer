@@ -27,7 +27,6 @@
     "@types/express-handlebars": "^5.3.1",
     "@types/node": "^16.7.4",
     "c3": "^0.7.20",
-    "d3": "^7.1.1",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
     "handlebars": "^4.7.7",
