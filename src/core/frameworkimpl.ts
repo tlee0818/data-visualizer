@@ -56,13 +56,17 @@ class ColorFrameworkImpl implements ColorFramework {
     }
 
     getColorDensityChart(): void{
+        console.log("getColorDensity")
         if (this._currentDisplayPlugin === null){
             this._chartHtmlString = "Chart Not Available"
+            console.log("Chart Not Available")
         }
         else if (this._selectedImage === null){
             this._chartHtmlString = "Image Not Selected"
+            console.log("Image Not Selected")
         }
         else{
+            console.log("getChart")
             this._chartHtmlString = this._currentDisplayPlugin.getChart(this._selectedImage)
         }
     }

@@ -4,7 +4,7 @@ import { FrameworkImage } from "../../core/frameworkimage";
 import { ColorFramework } from "../../core/framework";
 
 
-function newPiePlugin () : DisplayPlugin {
+function newBarPlugin () : DisplayPlugin {
     let parseImageToList = function (image : FrameworkImage) :  (string | number)[][] {
         const dens = image.getColorDensities()
         const L : (string | number)[][] = [[]]
@@ -42,7 +42,7 @@ function newPiePlugin () : DisplayPlugin {
                 bindto : "chart",
                 data: {
                     columns: columns as [string, ...c3.Primitive[]][],
-                    type : 'pie',
+                    type : 'bar',
                     onclick: function (d, i) { console.log("onclick", d, i); },
                     onmouseover: function (d, i) { console.log("onmouseover", d, i); },
                     onmouseout: function (d, i) { console.log("onmouseout", d, i); }
@@ -73,4 +73,4 @@ function newPiePlugin () : DisplayPlugin {
 }
 
 
-export {newPiePlugin}
+export {newBarPlugin}
