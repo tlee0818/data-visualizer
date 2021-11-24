@@ -26,22 +26,23 @@
  // game always holds the current version of the game
  // updates on actions and when starting a new game
  const framework = new ColorFrameworkImpl()
- const dataPluginsPromise = loadDataPlugins(DATA_PLUGIN_DIR)
  const displayPluginsPromise = loadDisplayPlugins(DISPLAY_PLUGIN_DIR)
+ const dataPluginsPromise = loadDataPlugins(DATA_PLUGIN_DIR)
+
+ displayPluginsPromise.then(ps =>
+  ps.forEach(p => {
+   console.log(p, "pdisp")
+    console.log('Registering plugin ' + p.getDisplayPluginName())
+    framework.registerDisplayPlugin(p)
+  })).catch(e => console.error(`Failed to load display plugins: ${e}`))
+
 
 dataPluginsPromise.then(ps => {
   ps.forEach(p => {
     console.log(p, "p")
     console.log('Registering plugin ' + p.getDataPluginName())
     framework.registerDataPlugin(p)
-  })}).catch(e => console.error(`Failed to load plugins: ${e}`))
-
-displayPluginsPromise.then(ps =>
-   ps.forEach(p => {
-    console.log(p, "p")
-     console.log('Registering plugin ' + p.getDisplayPluginName())
-     framework.registerDisplayPlugin(p)
-   })).catch(e => console.error(`Failed to load plugins: ${e}`))
+  })}).catch(e => console.error(`Failed to load data plugins: ${e}`))
 
 
 app.get("/", (req, res) => {
