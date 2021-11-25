@@ -16,9 +16,9 @@ function genPage (framework: ColorFrameworkImpl): any {
   }
 
   const displayPlugins: PluginEntry[] = []
-  const diplayPluginNames = framework.getRegisteredDisplayPluginName()
-  for (let i = 0; i < diplayPluginNames.length; i++) {
-    displayPlugins.push({ name: diplayPluginNames[i], link: '/registerDisplayPlugin?i=' + i })
+  const displayPluginNames = framework.getRegisteredDisplayPluginName()
+  for (let i = 0; i < displayPluginNames.length; i++) {
+    displayPlugins.push({ name: displayPluginNames[i], link: '/registerDisplayPlugin?i=' + i })
   }
 
   const currDataPlugin = framework.getCurrentDataPlugin()

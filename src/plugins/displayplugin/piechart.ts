@@ -38,20 +38,26 @@ function newPiePlugin () : DisplayPlugin {
                 const colorName = columns[i][0] as string
                 colors[i] = dict[colorName]
             }
+            return `
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js" integrity="sha512-FHsFVKQ/T1KWJDGSbrUhTJyS1ph3eRrxI228ND0EGaEp6v4a/vGwPWd3Dtd/+9cI7ccofZvl/wulICEurHN1pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js" integrity="sha512-+IpCthlNahOuERYUSnKFjzjdKXIbJ/7Dd6xvUp+7bEw0Jp2dg6tluyxLs+zq9BMzZgrLv8886T4cBSqnKiVgUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <div id="chart"></div>
+            <script>
             var chart = c3.generate({
-                bindto : "chart",
+                bindto : "#chart",
                 data: {
-                    columns: columns as [string, ...c3.Primitive[]][],
+                    columns: JSON.parse('${JSON.stringify(columns)}').slice(1),
                     type : 'pie',
                     onclick: function (d, i) { console.log("onclick", d, i); },
                     onmouseover: function (d, i) { console.log("onmouseover", d, i); },
                     onmouseout: function (d, i) { console.log("onmouseout", d, i); }
                 },
                 color: {
-                    pattern: colors
+                    pattern: JSON.parse('${JSON.stringify(colors)}').slice(1)
                   }
             })
-            return "<div id=chart></div>"
+            </script>
+            `
         },
 
 

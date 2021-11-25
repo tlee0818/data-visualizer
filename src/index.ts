@@ -78,6 +78,7 @@ app.get('/registerDisplayPlugin', (req, res) => {
  
  app.get('/analysis', (req, res) => {
    console.log("doing analysis")
+   framework.fetchColorDensity()
    framework.getColorDensityChart()
    renderPage(framework, res)
  })
