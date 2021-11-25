@@ -28,3 +28,18 @@ This class contains various information of a given image. Its constructor requir
 You can make new FrameworkImage class, if you have all those 4 arugments. Then, you just need to return it as an output of **queryImage**. 
 
 ## How to Implement Your Own Display Plugin
+specs are mentioned in comments as well.
+#### Data Plugin
+- getDataPluginName: () => string
+- - this returns the name of the plugin
+
+- queryImage: (keyword: string) => Promise<FrameworkImage>
+- - this querys an image with the keyword param. it returns a promise that returns an image. if an error occurs, it returns an image with the name of the error
+
+#### Display Plugin
+- getChart: (image: FrameworkImage) => string
+- - gets the chart @param image color density values as html string
+- onRegister: (framework: ColorFramework) => void
+- - Called (only once) when the plug-in is first registered with the framework, giving the plug-in a chance to perform any initial set-up such as loading the javascript
+- getDisplayPluginName: () => string
+- - returns the name of the string
