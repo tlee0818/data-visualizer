@@ -68,7 +68,7 @@
       <div class="col" id="displayplugin">
         {{#if currentDisplayPluginName}}
         <h2>{{currentDisplayPluginName}}</h2>
-        <button href="/analysis" class="btn btn-primary">Do Analysis</button>
+        <a href="/analysis" class="btn btn-primary">Do Analysis</a>
         {{else}}
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -97,7 +97,7 @@
 
       <div class="col">
         {{#if chart}}
-        {{chart}}
+        {{{chart}}}
         {{else}}
         <h3>Analysis yet to be done</h3>
         {{/if}}
