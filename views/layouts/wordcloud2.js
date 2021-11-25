@@ -1235,5 +1235,3 @@ if (!window.clearImmediate) {
     global.WordCloud = WordCloud
   }
 })(this) // jshint ignore:line
-
-WordCloud(document.getElementById('my_canvas'), { list: [['foo', 12], ['bar', 6]] } );
