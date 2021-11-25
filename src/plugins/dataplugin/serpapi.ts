@@ -1,4 +1,3 @@
-import { resolve } from "path/posix";
 import { DataPlugin } from "../../core/dataplugin";
 import { FrameworkImage } from "../../core/frameworkimage";
 import {fetch} from "node-fetch"
@@ -10,8 +9,6 @@ async function setImageDetails(image: FrameworkImage, urlPromise: Promise<Framew
 }
 
 function newSerpApi(): DataPlugin{
-
-    let image: FrameworkImage
 
     return{
         getDataPluginName (): string {
@@ -28,7 +25,7 @@ function newSerpApi(): DataPlugin{
             const resultPromise = await fetch(requestURL)
                 .then(res => {
                     if (!res.ok) { // res.status >= 200 && res.status < 300
-                        return
+                        throw new Error(res.errors[0])
                     }
                     else{
                         return res.json()
@@ -37,6 +34,9 @@ function newSerpApi(): DataPlugin{
                 .then(json => {
                     //console.log(json)
                     return new FrameworkImage(json.images_results[0].title, 0, 0, json.images_results[0].original)
+                })
+                .catch(err => {
+                    return new FrameworkImage(err, 0, 0, "")
                 })
                 
             return resultPromise
