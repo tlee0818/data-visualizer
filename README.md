@@ -43,3 +43,14 @@ specs are mentioned in comments as well.
 - - Called (only once) when the plug-in is first registered with the framework, giving the plug-in a chance to perform any initial set-up such as loading the javascript
 - getDisplayPluginName: () => string
 - - returns the name of the string
+
+
+## How to use GUI
+1. first choose a data plugin.
+2. type in a keyword you want to see and press submit.
+3. see that the image has loaded. if not, press refresh until it does show
+4. choose a display plugin
+5. see that the do analysis button exsists
+6. press that button to see the analysis chart
+7. if it does not load, refresh up to 10 times, until it does.
+
